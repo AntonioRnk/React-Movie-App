@@ -1,0 +1,28 @@
+.actorPage{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  text-align: left;
+  max-width: 1000px;
+  background: rgba(63, 61, 75, 0.97);
+  color: #fff;
+  border-radius: 15px;
+  margin: 0 50px;
+
+  .inner {
+    display: flex;
+    gap: 20px;
+  }
+  .poster {
+    border: 4px solid rgba(255, 255, 255, 0.86);
+    max-width: 327px;
+    height: 350px;
+    object-fit: contain;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
