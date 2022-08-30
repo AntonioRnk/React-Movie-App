@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/autoplay';
-import MovieListItem from '../../MovieListItem';
+import MovieListItem from '../../MovieListItem/MovieListItem';
 
 
 const Slider = ({listItem}) => {

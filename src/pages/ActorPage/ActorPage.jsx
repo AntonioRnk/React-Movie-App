@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {  useParams } from 'react-router-dom';
 import { urlPosterImg } from '../../API/config';
 import { getActorDetails, getActorPlay } from '../../API/getActorsInfo';
-import Slider from '../UI/Slider/Slider';
+import Slider from '../../components/UI/Slider/Slider';
 import styles from './ActorPage.module.scss'
 
 const ActorPage = () => {

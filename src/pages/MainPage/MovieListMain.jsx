@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { getPopularMovie } from '../API/getPopularMovie';
-import MovieListItem from './MovieListItem';
+import { getPopularMovie } from '../../API/getPopularMovie';
+import MovieListItem from '../../components/MovieListItem/MovieListItem';
+import styles from './MovieListMain.module.scss'
 
 const MovieListMain = ({searchList}) => {
     
@@ -13,7 +14,7 @@ const MovieListMain = ({searchList}) => {
     }, [])
 
   return (
-    <div className="movie-list">
+    <div className={styles.movieList}>
     {!searchList.length && !searchList[0]?.notfound &&
             movieList.map(item=>{
                 return  <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id}/>
@@ -23,7 +24,7 @@ const MovieListMain = ({searchList}) => {
               return <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id}/>
           })  }      
     {searchList[0]?.notfound &&
-        <div className="no-movie-find">Не знайдено, спробуйте ще раз. 😞</div>} 
+        <div className={styles.notFound}>Не знайдено, спробуйте ще раз. 😞</div>} 
     </div>
   )
 }

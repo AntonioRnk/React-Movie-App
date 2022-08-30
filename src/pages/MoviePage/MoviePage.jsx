@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import {useNavigate, useParams} from "react-router-dom";
-import { urlPosterImg } from '../API/config';
-import { getMovieInformation } from '../API/getMovieInformation';
-import { getActorsinMovie } from '../API/getActorsInfo';
-import TrailerList from './TrailerList/TrailerList';
-import MovieListRecommends from './MovieListRecommends'
+import { urlPosterImg } from '../../API/config';
+import { getMovieInformation } from '../../API/getMovieInformation';
+import { getActorsinMovie } from '../../API/getActorsInfo';
+import TrailerList from '../../components/TrailerList/TrailerList';
+import MovieListRecommends from '../../components/ListRecomeds/MovieListRecommends';
+import styles from './MoviePage.module.scss';
 
 const MoviePage = () => {
     const param = useParams();
@@ -22,24 +23,24 @@ const MoviePage = () => {
     },[param.id])
 
   return (
-    movieInfo.length !==0 && (<div className='movie-page'>
-        <div className="movie-page__inner">
-        <img className='ua-img' src="https://i.ibb.co/hg8h1Pv/ua.png" alt="ua" />
-            <div className="background-movie" style={{backgroundImage: `url(${urlPosterImg}${movieInfo.backdrop_path})`}}></div>
-            <img className='movie-page-poster' src={urlPosterImg+movieInfo.poster_path} alt="movie" />
-            <div className="movie-page__total">
+    movieInfo.length !==0 && (<div className={styles.moviePage}>
+        <div className={styles.inner}>
+        <img className={styles.uaImg} src="https://i.ibb.co/hg8h1Pv/ua.png" alt="ua" />
+            <div className={styles.backgroundMovie} style={{backgroundImage: `url(${urlPosterImg}${movieInfo.backdrop_path})`}}></div>
+            <img className={styles.poster} src={urlPosterImg+movieInfo.poster_path} alt="movie" />
+            <div className={styles.total}>
                <p>Назва: «{movieInfo.title}»</p>
                <p>Дата релізу: {movieInfo.release_date}</p>
                <p>Рейтинг: {movieInfo.vote_average}</p>
                <p>Довжина фільму: {movieInfo.runtime} хв</p>
-               <div className="movie-page-genres"> <p>Жанри:</p>
+               <div className={styles.genres}> <p>Жанри:</p>
                  {movieInfo.genres.map(item=>
-                    <p className='movie-page-genre-item' key={item.id} onClick={()=>{navigate(`/genre/${item.id}`)}}>/{item.name}
+                    <p className={styles.genreItem} key={item.id} onClick={()=>{navigate(`/genre/${item.id}`)}}>/{item.name}
                     </p>)}
                </div>
-               <div className="movie-page-actors"> <p>Актори:&nbsp;&nbsp;</p>
+               <div className={styles.actors}> <p>Актори:&nbsp;&nbsp;</p>
                  <p>{actorInfo.map(item=>
-                    <span className='movie-page-actors-item' key={item.id} onClick={()=>{navigate(`/actor/${item.id}`)}}>{item.name};&nbsp;&nbsp;
+                    <span className={styles.actorsItem} key={item.id} onClick={()=>{navigate(`/actor/${item.id}`)}}>{item.name};&nbsp;&nbsp;
                     </span>)} </p>
                </div>
                <p>{movieInfo.overview}</p>
@@ -50,6 +51,5 @@ const MoviePage = () => {
       </div>)
   )
 }
-
 
 export default MoviePage

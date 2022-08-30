@@ -1,0 +1,58 @@
+@import-normalize;
+
+html{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  padding-top: 100px;
+  min-height: 100vh;
+  background-image: url('https://i.ibb.co/qxVW9F7/Pngtree-cinema-stage-333472.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__header {
+    width: 100%;
+    background-color: #000000;
+    /* min-height: 100px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: white;
+    margin-bottom: 15px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+}
+
+.swiper-horizontal>.swiper-pagination-bullets, 
+.swiper-pagination-bullets.swiper-pagination-horizontal, 
+.swiper-pagination-custom, .swiper-pagination-fraction{
+  top: 0;
+}
+.swiper{
+  padding: 0px;
+}
+
+

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import ActorPage from "./components/ActorPage/ActorPage";
+import ActorPage from "./pages/ActorPage/ActorPage";
 import InputSearch from "./components/UI/InputSearch/InputSearch";
-import MovieListGenre from "./components/MovieListGenre";
-import MovieListMain  from './components/MovieListMain';
-import MoviePage from "./components/MoviePage";
-import './styles/App.scss';
+import MovieListGenre from "./pages/GenrePage/MovieListGenre";
+import MovieListMain  from './pages/MainPage/MovieListMain';
+import MoviePage from "./pages/MoviePage/MoviePage";
+import './style/App.scss';
 
 function App() {
 
@@ -16,8 +16,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-    <header className="App-header">
+    <div className="app">
+     <header className="app__header">
       <InputSearch handleSearch={searchListElements}/>
      </header>
       <Routes>
