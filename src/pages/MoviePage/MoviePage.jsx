@@ -33,17 +33,17 @@ const MoviePage = () => {
                <p>Дата релізу: {movieInfo.release_date}</p>
                <p>Рейтинг: {movieInfo.vote_average}</p>
                <p>Довжина фільму: {movieInfo.runtime} хв</p>
-               <div className={styles.genres}> <p>Жанри:</p>
+               <div className={styles.genres}> <p>Жанри:&nbsp;</p>
                  {movieInfo.genres.map(item=>
-                    <p className={styles.genreItem} key={item.id} onClick={()=>{navigate(`/genre/${item.id}`)}}>/{item.name}
-                    </p>)}
+                    <p className={styles.genreItem} key={item.id} onClick={()=>{navigate(`/genre/${item.id}/${item.name}`)}}>{item.name};
+                    &nbsp;</p>)}
                </div>
-               <div className={styles.actors}> <p>Актори:&nbsp;&nbsp;</p>
-                 <p>{actorInfo.map(item=>
-                    <span className={styles.actorsItem} key={item.id} onClick={()=>{navigate(`/actor/${item.id}`)}}>{item.name};&nbsp;&nbsp;
-                    </span>)} </p>
+               <div className={styles.actors}> <p>Актори:&nbsp;</p>
+                 <p className={styles.actorsList}>{actorInfo.map(item=>
+                    <span className={styles.actorsItem} key={item.id} onClick={()=>{navigate(`/actor/${item.id}`)}}>{item.name};
+                    &nbsp;</span>)}... та інші.</p>
                </div>
-               <p>{movieInfo.overview}</p>
+               <p className={styles.overview}>{movieInfo.overview}</p>
             </div>
         </div>
         <TrailerList idMovie={param.id}/>

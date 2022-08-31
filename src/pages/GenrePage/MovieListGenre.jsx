@@ -8,20 +8,22 @@ const MovieListGenre = () => {
 
     const param = useParams();
     const [movieList, setMovieList] = useState([]);
-
+    
     useEffect(()=>{
     getGenreMovieList(param.id).then(movies=>{
       setMovieList(movies);
     });
-    }, [param.id])
 
-  console.log(styles);
+    }, [param.id])
 
   return (
     <div className={styles.genrePage}>
+      <h2 className={styles.genreName}>{param.name}</h2>
+      <div className={styles.pageInner}>
        {movieList.map(item=>{
           return <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id}/>
-        })}       
+        })}
+      </div>       
     </div>
   )
 }

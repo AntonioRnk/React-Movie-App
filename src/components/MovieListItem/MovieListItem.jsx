@@ -6,8 +6,6 @@ import styles from './MovieListItem.module.scss'
 const MovieListItem = ({path,title,id}) => {
 const navigate = useNavigate();
 
-console.log(styles.play);
-
   return (
     path &&
     <div className={styles.movieItem} onClick={()=>{navigate(`/movies/${id}`)}}>

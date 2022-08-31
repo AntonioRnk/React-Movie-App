@@ -30,12 +30,14 @@ const ActorPage = () => {
          <p>Им'я: {actorInfo.name}</p>
          <p>Дата народження: {actorInfo.birthday}</p>
          <p>Місце народження: {actorInfo.place_of_birth}</p>
-         <p>{actorInfo.biography}</p>
+         <p className={styles.biography}>{actorInfo.biography}</p>
         </div>
        </div>
-      <div>
-        {actorPlay.length >= 4 && <Slider listItem={actorPlay}></Slider>}
-      </div>
+        {actorPlay.length >= 4 &&
+        <div>
+        <h3>Приймав(ла) участь у фільмах:</h3> 
+        <Slider listItem={actorPlay}></Slider>
+        </div>}
      </div>
     : <div className={styles.actorPage}>
       <div>Профілю не знайдено 😞</div>

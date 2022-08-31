@@ -5,6 +5,7 @@ import InputSearch from "./components/UI/InputSearch/InputSearch";
 import MovieListGenre from "./pages/GenrePage/MovieListGenre";
 import MovieListMain  from './pages/MainPage/MovieListMain';
 import MoviePage from "./pages/MoviePage/MoviePage";
+import 'normalize.css';
 import './style/App.scss';
 
 function App() {
@@ -20,12 +21,19 @@ function App() {
      <header className="app__header">
       <InputSearch handleSearch={searchListElements}/>
      </header>
+     <div className="app__inner">
+      <div className="app__left">
+      left inner
+      </div>
+      <div className="app__right">
       <Routes>
         <Route path="/" element={<MovieListMain searchList={search}/>} />
-        <Route path="/movies/:id" element={<MoviePage />} />
-        <Route path="/genre/:id" element={<MovieListGenre />} />
+        <Route path="/movies/:id" element={<MoviePage/>} />
+        <Route path="/genre/:id/:name" element={<MovieListGenre/>} />
         <Route path="/actor/:id" element={<ActorPage />} />
       </Routes>
+      </div>
+     </div>
     </div>
   );
 }
