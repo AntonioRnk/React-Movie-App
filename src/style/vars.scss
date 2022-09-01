@@ -1,0 +1,22 @@
+$base-border-color: rgba(255, 255, 255, 0.14);
+$base-width-content: 1015px;
+
+%os-light{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300; 
+}
+
+%os-regular{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400; 
+}
+
+%os-medium{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+}
+
+%os-semibold{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+}

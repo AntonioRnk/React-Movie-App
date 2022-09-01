@@ -1,12 +1,16 @@
+@import '../../style/vars.scss';
+
 .moviePage{
     display: flex;
     flex-direction: column;
     text-align: left;
-    width: 1100px;
+    width: $base-width-content;
+    border: 1px solid $base-border-color;
     background: rgba(63, 61, 75, 0.97);
     z-index: 1;
     color: #fff;
     border-radius: 15px;
+    padding-bottom: 20px;
     margin: 0 50px;
     p {
       margin: 0px;
@@ -20,7 +24,6 @@
       }
 
     .poster {
-        cursor: pointer;
         border: 3px solid rgba(141, 139, 255, 0.86);
         width: 300px;
         min-height: 450px;
@@ -35,6 +38,7 @@
         flex-direction: column;
         gap: 20px;
         font-size: 18px;
+        @extend %os-regular;
         z-index: 1;
         padding: 10px 50px 10px 0px;
         line-height: 28px;
@@ -42,7 +46,6 @@
         .overview{
           text-indent: 20px;
         }
-
       }
 
     .genres,

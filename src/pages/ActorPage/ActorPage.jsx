@@ -40,7 +40,7 @@ const ActorPage = () => {
         </div>}
      </div>
     : <div className={styles.actorPage}>
-      <div>Профілю не знайдено 😞</div>
+      <div className={styles.notFound} >Профілю не знайдено 😞</div>
       </div>
   )
 }
