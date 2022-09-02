@@ -1,0 +1,3 @@
+export const SEARCH_GENRE = 'SEARCH_GENRE'
+export const SEARCH_QUERY = 'SEARCH_QUERY'
+export const SEARCH_IS_FOUND = 'SEARCH_IS_FOUND'

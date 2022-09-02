@@ -1,20 +1,28 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getSearchMovieList } from '../../../API/getSearchList';
+import { searchIsFound, searchListMovies } from '../../../redux/actions';
 import styles from './InputSearch.module.scss';
 
-const InputSearch = ({handleSearch}) => {
+const InputSearch = () => {
   
   const [searchParam, SetSearchParam] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function searchRequest(e){
     e.preventDefault();
     if(searchParam){    
     getSearchMovieList(searchParam).then(rezult=>{
       if(rezult.length){
-        handleSearch(rezult);
-      } else {handleSearch([{notfound: true}])}
+        dispatch(searchListMovies(rezult));
+        dispatch(searchIsFound(true));
+      } 
+      else {
+        dispatch(searchIsFound(false));
+        dispatch(searchListMovies([]));
+      }
       navigate("/");
     });
     SetSearchParam('');

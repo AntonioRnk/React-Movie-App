@@ -6,10 +6,14 @@ import { getActorsinMovie } from '../../API/getActorsInfo';
 import TrailerList from '../../components/TrailerList/TrailerList';
 import MovieListRecommends from '../../components/ListRecomeds/MovieListRecommends';
 import styles from './MoviePage.module.scss';
+import { useDispatch } from 'react-redux';
+import { searchFromGenre } from '../../redux/actions';
 
 const MoviePage = () => {
     const param = useParams();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const [movieInfo, setMovieInfo] = useState([]);
     const [actorInfo, setActorInfo] = useState([]);
     useEffect (()=>{
@@ -21,6 +25,11 @@ const MoviePage = () => {
         setActorInfo(topTenActors);
       });
     },[param.id])
+     
+    function routeToGenre(id,name) {
+      dispatch(searchFromGenre(id));
+      navigate(`/genre/${id}/${name}`);
+    }
 
   return (
     movieInfo.length !==0 && (<div className={styles.moviePage}>
@@ -35,7 +44,7 @@ const MoviePage = () => {
                <p>Довжина фільму: {movieInfo.runtime} хв</p>
                <div className={styles.genres}> <p>Жанри:&nbsp;</p>
                  {movieInfo.genres.map(item=>
-                    <p className={styles.genreItem} key={item.id} onClick={()=>{navigate(`/genre/${item.id}/${item.name}`)}}>{item.name};
+                    <p className={styles.genreItem} key={item.id} onClick={()=>{routeToGenre(item.id,item.name)}}>{item.name};
                     &nbsp;</p>)}
                </div>
                <div className={styles.actors}> <p>Актори:&nbsp;</p>

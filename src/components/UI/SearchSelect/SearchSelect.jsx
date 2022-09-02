@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useNavigate } from 'react-router-dom';
 import styles from './SearchSelect.module.scss';
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { searchFromGenre } from '../../../redux/actions';
 
 const SearchSelect = ({nameList, selectList, route}) => {
 
-  const [listId, setListId] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function changeHande(event){
-    setListId(event.target.value);
+    dispatch(searchFromGenre(event.target.value));
     const [listItem] = selectList.filter(item=>item.id===event.target.value);
     if(event.target.value){
         navigate(`${route}${listItem.id}/${listItem.name}`);
@@ -21,7 +23,12 @@ const SearchSelect = ({nameList, selectList, route}) => {
         navigate("/");
     }
   }
-  
+
+  const listId = useSelector((state)=>{
+    const {searchReducer} = state;
+    return searchReducer.value;
+  })
+
   return (
     <div className={styles.selectForm}>
       <FormControl variant="filled" sx={{ m: 1, minWidth: 250 }}>
