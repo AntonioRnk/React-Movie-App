@@ -1,0 +1,50 @@
+@import '../../../style/vars.scss';
+
+.header {
+    width: 100%;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    color: white;
+    margin-bottom: 15px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.list {
+    display: flex;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 21px;
+    @extend %os-light;
+    transition: all 0.3s;
+    padding: 0 20px;
+    border-right: 1px solid $base-border-color;
+
+    &:hover{
+        color: #6578d7;
+    }
+}
+
+.account {
+    display: flex;
+    align-items: center;
+   
+    .logIn {
+        background-image: url('https://img.icons8.com/nolan/64/login-rounded-right.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: top center;
+        width: 45px;
+        height: 45px;
+        margin-right: 10px;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}

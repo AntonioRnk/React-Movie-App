@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getSearchMovieList } from '../../../API/getSearchList';
-import { searchIsFound, searchListMovies } from '../../../redux/actions';
+import { searchFromGenre, searchIsFound, searchListMovies } from '../../../redux/actions';
 import styles from './InputSearch.module.scss';
 
 const InputSearch = () => {
@@ -13,6 +13,7 @@ const InputSearch = () => {
 
   function searchRequest(e){
     e.preventDefault();
+    dispatch(searchFromGenre(''));
     if(searchParam){    
     getSearchMovieList(searchParam).then(rezult=>{
       if(rezult.length){

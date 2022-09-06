@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ActorPage from "./pages/ActorPage/ActorPage";
-import InputSearch from "./components/UI/InputSearch/InputSearch";
 import MovieListGenre from "./pages/GenrePage/MovieListGenre";
 import MovieListMain  from './pages/MainPage/MovieListMain';
 import MoviePage from "./pages/MoviePage/MoviePage";
@@ -9,6 +8,7 @@ import SearchSelect from "./components/UI/SearchSelect/SearchSelect";
 import { getGenreFullList } from "./API/getGenreFullList";
 import 'normalize.css';
 import './style/App.scss';
+import Header from "./components/UI/Header/Header";
 
 
 function App() {
@@ -23,9 +23,7 @@ function App() {
 
   return (
     <div className="app">
-     <header className="app__header">
-      <InputSearch/>
-     </header>
+      <Header/>
      <div className="app__inner">
       <div className="app__left">
         <h3>Параметри пошуку:</h3>

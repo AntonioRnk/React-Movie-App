@@ -20,17 +20,20 @@ const MovieListMain = () => {
     })
 
   return (
-    <div className={styles.movieList}>
-    {!searchMovies.length && isFound &&
-            movieList.map(item=>{
-                return  <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id}/>
-          })  } 
-    {!!searchMovies.length && isFound &&
-            searchMovies.map(item=>{    
-              return <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id}/>
-          })  }      
-    {!isFound &&
-        <div className={styles.notFound}>Не знайдено, спробуйте ще раз. 😞</div>} 
+    <div className={styles.listInner}>
+      <h2 className={styles.listName}>Топ 20 найчастіше переглядають</h2>
+      <div className={styles.movieList}>
+      {!searchMovies.length && isFound &&
+              movieList.map(item=>{
+                  return  <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id}/>
+            })  } 
+      {!!searchMovies.length && isFound &&
+              searchMovies.map(item=>{    
+                return <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id}/>
+            })  }      
+      {!isFound &&
+          <div className={styles.notFound}>Не знайдено, спробуйте ще раз. 😞</div>} 
+      </div>
     </div>
   )
 }
