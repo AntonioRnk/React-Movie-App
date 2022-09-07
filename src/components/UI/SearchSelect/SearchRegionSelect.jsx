@@ -6,27 +6,28 @@ import Select from '@mui/material/Select';
 import { useNavigate } from 'react-router-dom';
 import styles from './SearchSelect.module.scss';
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { searchFromGenre } from '../../../redux/actions';
+import { searchFromRegion } from '../../../redux/actions';
 
-const SearchSelect = ({nameList, selectList, route}) => {
+const SearchRegionSelect = ({nameList, selectList}) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   function changeHande(event){
-    dispatch(searchFromGenre(event.target.value));
-    const [listItem] = selectList.filter(item=>item.id===event.target.value);
-    if(event.target.value){
-        navigate(`${route}${listItem.id}/${listItem.name}`);
-    }
-    else{
-        navigate("/");
-    }
+    const [listItem] = selectList.filter(item=>item.iso_3166_1===event.target.value);
+    if (listItem) {
+        dispatch(searchFromRegion(event.target.value,listItem.native_name));
+        navigate("/searching");
+        }
+        else {
+          dispatch(searchFromRegion('',''));
+          navigate("/");
+      }
   }
 
   const listId = useSelector((state)=>{
     const {searchReducer} = state;
-    return searchReducer.value;
+    return searchReducer.regionId;
   })
 
   return (
@@ -41,7 +42,7 @@ const SearchSelect = ({nameList, selectList, route}) => {
             <em>Не вибрано</em>
           </MenuItem>
           {selectList && selectList.map(item=>{
-            return <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>
+            return <MenuItem key={item.iso_3166_1} value={item.iso_3166_1}>{item.native_name}</MenuItem>
           })}
         </Select>
       </FormControl>
@@ -49,4 +50,4 @@ const SearchSelect = ({nameList, selectList, route}) => {
   );
 }
 
-export default SearchSelect;
+export default SearchRegionSelect;

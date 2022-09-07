@@ -32,19 +32,8 @@
     }
 }
 
-.account {
-    display: flex;
-    align-items: center;
-   
-    .logIn {
-        background-image: url('https://img.icons8.com/nolan/64/login-rounded-right.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: top center;
-        width: 45px;
-        height: 45px;
-        margin-right: 10px;
-        background-color: transparent;
-        cursor: pointer;
-    }
+.logIn{
+    margin-right: 20px !important;
+    color: #fff !important;
+    border: 1px solid #fff !important;
 }

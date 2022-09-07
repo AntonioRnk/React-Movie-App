@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { getTrailerKey } from '../../API/getTrailerKey';
 import styles from './TrailerList.module.scss';
@@ -6,14 +7,16 @@ const TrailerList = ({idMovie}) => {
 
 const [trailerItems, setTrailerItems] = useState([]);
 const [isSearch, setIsSearch] = useState(false);
+const [loading, SetLoading] = useState(true);
 
 useEffect (()=>{
-    getTrailerKey(idMovie).then(rezult=>{
+    getTrailerKey(idMovie,SetLoading).then(rezult=>{
        setTrailerItems(rezult); 
     })
   },[idMovie])
 
-  return (   
+  return (
+    !loading ?   
     <div className={styles.movieTrailer}>
       { !isSearch && trailerItems.length > 0 
         &&  <div className={styles.inner}> 
@@ -39,6 +42,7 @@ useEffect (()=>{
         <div className={styles.notTrailer}>Трейлерів не знайдено 😞</div>
       }
     </div>
+     : <CircularProgress className={styles.progress} size ={60}/>
   )
 }
 

@@ -8,6 +8,8 @@ import MovieListRecommends from '../../components/ListRecomeds/MovieListRecommen
 import styles from './MoviePage.module.scss';
 import { useDispatch } from 'react-redux';
 import { searchFromGenre } from '../../redux/actions';
+import ImageLoader from 'react-imageloader';
+import { CircularProgress } from '@mui/material';
 
 const MoviePage = () => {
     const param = useParams();
@@ -16,8 +18,10 @@ const MoviePage = () => {
 
     const [movieInfo, setMovieInfo] = useState([]);
     const [actorInfo, setActorInfo] = useState([]);
+    const [loading, SetLoading] = useState(true);
+
     useEffect (()=>{
-      getMovieInformation(param.id).then(rezult=>{
+      getMovieInformation(param.id,SetLoading).then(rezult=>{
         setMovieInfo(rezult);
       });
       getActorsinMovie(param.id).then(rezult=>{
@@ -25,18 +29,30 @@ const MoviePage = () => {
         setActorInfo(topTenActors);
       });
     },[param.id])
+
+    function preloader() {
+      return <img src="https://i.ibb.co/B4SfH9P/111111.gif" alt='loader'/>;
+    }
      
     function routeToGenre(id,name) {
-      dispatch(searchFromGenre(id));
-      navigate(`/genre/${id}/${name}`);
+      dispatch(searchFromGenre(id,name));
+      navigate("/searching");
     }
 
+
   return (
-    movieInfo.length !==0 && (<div className={styles.moviePage}>
+    !loading ? (<div className={styles.moviePage}>
         <div className={styles.inner}>
         <img className={styles.uaImg} src="https://i.ibb.co/hg8h1Pv/ua.png" alt="ua" />
             <div className={styles.backgroundMovie} style={{backgroundImage: `url(${urlPosterImg}${movieInfo.backdrop_path})`}}></div>
-            <img className={styles.poster} src={urlPosterImg+movieInfo.poster_path} alt="movie" />
+            {/* <img className={styles.poster} src={urlPosterImg+movieInfo.poster_path} alt="movie" /> */}
+            <ImageLoader
+              className={styles.poster} 
+              src={urlPosterImg+movieInfo.poster_path}
+              alt = {"movie"} 
+              wrapper={React.createFactory('div')}
+              preloader={preloader}>
+            </ImageLoader>
             <div className={styles.total}>
                <p>Назва: «{movieInfo.title}»</p>
                <p>Дата релізу: {movieInfo.release_date}</p>
@@ -58,6 +74,7 @@ const MoviePage = () => {
         <TrailerList idMovie={param.id}/>
         <MovieListRecommends idMovie={param.id}/>
       </div>)
+      : <CircularProgress className={styles.progress} size ={60}/>
   )
 }
 

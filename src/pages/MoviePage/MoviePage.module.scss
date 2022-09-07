@@ -25,12 +25,15 @@
 
     .poster {
         border: 3px solid rgba(141, 139, 255, 0.86);
-        width: 300px;
-        min-height: 450px;
-        max-height: 550px;
         object-fit: cover;
         position: relative;
         z-index: 1;
+
+        img {
+          width: 300px;
+          min-height: 450px;
+          max-height: 550px;
+        }
       }
 
     .total{
@@ -86,3 +89,7 @@
     height: 50px;
     object-fit: contain;
   }
+
+  .progress {
+    margin-top: 100px;
+}

@@ -7,12 +7,14 @@ export const getActorsinMovie = async(idMovie)=>{
     return actorsInfo;
 }
 
-export const getActorDetails = async(idActor)=>{
+export const getActorDetails = async(idActor,isLoading)=>{
+    isLoading(true);
     const actorsDetails = await axios.get(`https://api.themoviedb.org/3/person/${idActor}?api_key=${apiKey}`,
     {params: {
         language: 'uk', 
     }})
     const actorInfo = await actorsDetails.data;
+    isLoading(false);
     return actorInfo;
 }
 

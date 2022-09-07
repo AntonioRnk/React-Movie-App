@@ -1,21 +1,31 @@
+import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { getGenreMovieList } from '../../API/getGenreMovieList';
+import { useSelector } from 'react-redux';
+import { getSearchMovieList} from '../../API/getSearchMovieList';
 import MovieListItem from '../../components/MovieListItem/MovieListItem';
 import PaginationMovie from '../../components/UI/Pagination/PaginationMovie';
 import styles from './MovieListGenre.module.scss';
 
 const MovieListGenre = () => {
 
-    const param = useParams();
     const [movieList, setMovieList] = useState([]);
+    const [loading, SetLoading] = useState(true);
     const [totalRezults, setTotalRezults] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [currentPage, SetCurrentPage] = useState(1);
-    
+
+    const [genryId,genryName] = useSelector((state)=>{
+      const {searchReducer} = state;
+      return [searchReducer.genryId, searchReducer.genryName];
+    })
+
+    const [regionId,regionName] = useSelector((state)=>{
+      const {searchReducer} = state;
+      return [searchReducer.regionId, searchReducer.regionName];
+    })
+
     useEffect(()=>{
-    getGenreMovieList(param.id,currentPage).then(movies=>{
-      console.log(movies);
+      getSearchMovieList(genryId,regionId,currentPage,SetLoading).then(movies=>{
       setMovieList(movies.results);
       setTotalRezults(movies.total_results);
       if(movies.total_pages>500){
@@ -24,14 +34,17 @@ const MovieListGenre = () => {
        setTotalPages(movies.total_pages); }
     });
 
-    }, [param.id,currentPage])
+    }, [genryId,regionId,currentPage,])
    
 
   return (
+    !loading ? 
     <div className={styles.genrePage}>
       <div className={styles.genreInfo}>
       <p>Вибрано:</p>
-      <h2 className={styles.genreName}>{param.name}</h2>
+      {genryName ? <h2 className={styles.genreName}>{genryName}</h2>
+      : <h2 className={styles.genreName}>{regionName}</h2>
+      }
       <p>Знайдено: {totalRezults}</p>
       </div>
       <div className={styles.pageInner}>
@@ -43,6 +56,7 @@ const MovieListGenre = () => {
       <PaginationMovie pages = {totalPages} currentPage = {currentPage} handleCurrent = {SetCurrentPage}/>
       </div>     
     </div>
+    : <CircularProgress className={styles.progress} size ={60}/>
   )
 }
 

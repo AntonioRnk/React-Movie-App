@@ -1,7 +1,10 @@
-import { SEARCH_GENRE, SEARCH_IS_FOUND, SEARCH_QUERY } from "./types";
+import { SEARCH_GENRE, SEARCH_IS_FOUND, SEARCH_QUERY, SEARCH_REGION } from "./types";
 
 const initState = {
-    value : '',
+    genryId : '',
+    genryName : '',
+    regionId : '',
+    regionName : '',
     list : [],
     found : true
 }
@@ -9,7 +12,9 @@ const initState = {
 export const searchReducer = (state = initState, action) => {
     switch(action.type){
         case SEARCH_GENRE:
-            return {...state, value: action.value}
+            return {...state, genryId: action.genryId, genryName: action.genryName}
+        case SEARCH_REGION:
+            return {...state, regionId: action.regionId, regionName: action.regionName}       
         case SEARCH_QUERY:
             return {...state, list: action.list}
         case SEARCH_IS_FOUND:

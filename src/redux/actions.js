@@ -1,9 +1,18 @@
-import { SEARCH_GENRE, SEARCH_IS_FOUND, SEARCH_QUERY } from "./types";
+import { SEARCH_GENRE, SEARCH_IS_FOUND, SEARCH_QUERY, SEARCH_REGION } from "./types";
 
-export const searchFromGenre = (value) =>{
+export const searchFromGenre = (genryId,genryName) =>{
     return {
         type: SEARCH_GENRE,
-        value,
+        genryId,
+        genryName,
+    }
+}
+
+export const searchFromRegion = (regionId,regionName) =>{
+    return {
+        type: SEARCH_REGION,
+        regionId,
+        regionName,
     }
 }
 
