@@ -1,4 +1,4 @@
-import { SEARCH_GENRE, SEARCH_IS_FOUND, SEARCH_QUERY, SEARCH_REGION } from "./types";
+import { SEARCH_DATE, SEARCH_GENRE, SEARCH_IS_FOUND, SEARCH_QUERY, SEARCH_REGION, CURRENT_PAGE } from "./types";
 
 export const searchFromGenre = (genryId,genryName) =>{
     return {
@@ -29,3 +29,20 @@ export const searchIsFound = (found) =>{
         found,
     }
 }
+
+
+export const searchFromDate = (range) =>{
+    return {
+        type: SEARCH_DATE,
+        range,
+    }
+}
+
+export const searchPage = (page) =>{
+    return {
+        
+        type: CURRENT_PAGE,
+        page,
+    }
+}
+

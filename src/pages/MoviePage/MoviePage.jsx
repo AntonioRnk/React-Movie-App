@@ -8,7 +8,8 @@ import MovieListRecommends from '../../components/ListRecomeds/MovieListRecommen
 import styles from './MoviePage.module.scss';
 import { useDispatch } from 'react-redux';
 import { searchFromGenre } from '../../redux/actions';
-import ImageLoader from 'react-imageloader';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { CircularProgress } from '@mui/material';
 
 const MoviePage = () => {
@@ -29,30 +30,28 @@ const MoviePage = () => {
         setActorInfo(topTenActors);
       });
     },[param.id])
-
-    function preloader() {
-      return <img src="https://i.ibb.co/B4SfH9P/111111.gif" alt='loader'/>;
-    }
      
     function routeToGenre(id,name) {
       dispatch(searchFromGenre(id,name));
       navigate("/searching");
     }
 
-
   return (
     !loading ? (<div className={styles.moviePage}>
         <div className={styles.inner}>
         <img className={styles.uaImg} src="https://i.ibb.co/hg8h1Pv/ua.png" alt="ua" />
             <div className={styles.backgroundMovie} style={{backgroundImage: `url(${urlPosterImg}${movieInfo.backdrop_path})`}}></div>
-            {/* <img className={styles.poster} src={urlPosterImg+movieInfo.poster_path} alt="movie" /> */}
-            <ImageLoader
-              className={styles.poster} 
-              src={urlPosterImg+movieInfo.poster_path}
-              alt = {"movie"} 
-              wrapper={React.createFactory('div')}
-              preloader={preloader}>
-            </ImageLoader>
+            {movieInfo.poster_path ?    
+                <LazyLoadImage
+                  className={styles.poster}
+                  alt={""}
+                  effect="blur"
+                  height={450}
+                  src={urlPosterImg+movieInfo.poster_path}
+                  width={300} />
+                : <div className={styles.notFound}>
+                   <img className={styles.poster} src="https://i.ibb.co/3BdG0wD/notfound-image.jpg" alt="notFound" />
+                </div>}
             <div className={styles.total}>
                <p>Назва: «{movieInfo.title}»</p>
                <p>Дата релізу: {movieInfo.release_date}</p>

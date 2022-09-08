@@ -21,7 +21,7 @@ const MovieListMain = () => {
 
   return (
     <div className={styles.listInner}>
-      <h2 className={styles.listName}>Топ 20 найчастіше переглядають</h2>
+      <h2 className={styles.listName}>Популярні фільми</h2>
       <div className={styles.movieList}>
       {!searchMovies.length && isFound &&
               movieList.map(item=>{

@@ -1,6 +1,7 @@
 import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import ImageLoader from 'react-imageloader';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import {  useParams } from 'react-router-dom';
 import { urlPosterImg } from '../../API/config';
 import { getActorDetails, getActorPlay } from '../../API/getActorsInfo';
@@ -13,10 +14,6 @@ const ActorPage = () => {
     const [actorPlay, setActorPlay] = useState([]);
     const [loading, SetLoading] = useState(true);
 
-    function preloader() {
-      return <img src="https://i.ibb.co/B4SfH9P/111111.gif" alt='loader'/>;
-    }
-
     useEffect (()=>{
         getActorDetails(param.id, SetLoading).then(rezult=>{
           setActorInfo(rezult);
@@ -27,20 +24,21 @@ const ActorPage = () => {
           });
 
       },[param.id])
-  
+
+
   return (
   !loading ?
   <div>
     {actorInfo.profile_path 
     ? <div className={styles.actorPage}>
        <div className={styles.inner}>
-        <ImageLoader
-          className={styles.poster} 
-          src={urlPosterImg+actorInfo.profile_path}
-          alt = {""} 
-          wrapper={React.createFactory('div')}
-          preloader={preloader}>
-        </ImageLoader>
+       <LazyLoadImage
+         className={styles.poster}
+         alt={""}
+         effect="blur"
+         height={350}
+         src={urlPosterImg+actorInfo.profile_path}
+         width={250} />
       <div className={styles.info}>
          <p>Им'я: {actorInfo.name}</p>
          <p>Дата народження: {actorInfo.birthday}</p>

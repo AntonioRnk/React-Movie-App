@@ -11,6 +11,7 @@ import './style/App.scss';
 import Header from "./components/UI/Header/Header";
 import { getAllRegion } from "./API/getAllRegion";
 import SearchRegionSelect from "./components/UI/SearchSelect/SearchRegionSelect";
+import RangeSlider from "./components/UI/RangeSlider/RangeSlider";
 
 
 function App() {
@@ -33,8 +34,9 @@ function App() {
      <div className="app__inner">
       <div className="app__left">
         <h3>Параметри пошуку:</h3>
-        <SearchGenrySelect nameList={'Жанри'} selectList ={genreList} />
-        <SearchRegionSelect nameList={'Країна'} selectList ={regionList} />
+        <SearchGenrySelect nameList={'Жанр'} selectList ={genreList} />
+        <SearchRegionSelect nameList={'Мова оригіналу'} selectList ={regionList} />
+        <RangeSlider/>
       </div>
       <div className="app__right">
       <Routes>

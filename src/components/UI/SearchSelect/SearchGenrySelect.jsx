@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 import { useNavigate } from 'react-router-dom';
 import styles from './SearchSelect.module.scss';
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { searchFromGenre } from '../../../redux/actions';
+import { searchFromGenre, searchPage } from '../../../redux/actions';
 
 const SearchGenrySelect = ({nameList, selectList, route}) => {
 
@@ -14,6 +14,7 @@ const SearchGenrySelect = ({nameList, selectList, route}) => {
   const dispatch = useDispatch();
 
   function changeHande(event){
+    dispatch(searchPage(1));
     const [listItem] = selectList.filter(item=>item.id===event.target.value);
     if (listItem) {
     dispatch(searchFromGenre(event.target.value,listItem.name));
@@ -21,7 +22,6 @@ const SearchGenrySelect = ({nameList, selectList, route}) => {
     }
     else {
       dispatch(searchFromGenre('',''));
-      navigate("/");
     }
   }
 

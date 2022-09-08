@@ -1,5 +1,6 @@
 import React from 'react';
-import ImageLoader from 'react-imageloader';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { useNavigate } from 'react-router-dom';
 import { urlPosterImg } from '../../API/config';
 import styles from './MovieListItem.module.scss'
@@ -7,21 +8,16 @@ import styles from './MovieListItem.module.scss'
 const MovieListItem = ({path,title,id}) => {
 const navigate = useNavigate();
 
-function preloader() {
-  return <img src="https://i.ibb.co/B4SfH9P/111111.gif" alt='loader'/>;
-}
-
-
   return (
     <div className={styles.movieItem} onClick={()=>{navigate(`/movies/${id}`)}}>
       { path ? 
-         <ImageLoader
-          className={styles.poster} 
-          src={urlPosterImg+path}
-          alt = {title} 
-          wrapper={React.createFactory('div')}
-          preloader={preloader}>
-        </ImageLoader>
+         <LazyLoadImage
+         className={styles.poster} 
+         alt={title}
+         effect="blur"
+         height={337}
+         src={urlPosterImg+path}
+         width={227} />
         : <div className={styles.notFound}>
              <p>{title}</p>
              <img className={styles.poster} src="https://i.ibb.co/3BdG0wD/notfound-image.jpg" alt="notFound" />

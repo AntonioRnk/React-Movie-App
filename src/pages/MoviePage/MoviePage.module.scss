@@ -21,18 +21,20 @@
         display: flex;
         gap: 20px;
         z-index: -1;
+        padding-bottom: 8px;
       }
 
     .poster {
         border: 3px solid rgba(141, 139, 255, 0.86);
         object-fit: cover;
+        width: 300px;
+        height: 450px;
         position: relative;
         z-index: 1;
 
         img {
           width: 300px;
-          min-height: 450px;
-          max-height: 550px;
+          height: 450px;
         }
       }
 
@@ -92,4 +94,10 @@
 
   .progress {
     margin-top: 100px;
+}
+
+.notFound {
+  object-fit: contain;
+  width: 300px;
+  height: 450px;
 }

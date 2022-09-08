@@ -1,18 +1,29 @@
-import { CircularProgress } from '@mui/material';
+import { CircularProgress} from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getSearchMovieList} from '../../API/getSearchMovieList';
 import MovieListItem from '../../components/MovieListItem/MovieListItem';
 import PaginationMovie from '../../components/UI/Pagination/PaginationMovie';
 import styles from './MovieListGenre.module.scss';
-
+ 
 const MovieListGenre = () => {
 
     const [movieList, setMovieList] = useState([]);
     const [loading, SetLoading] = useState(true);
-    const [totalRezults, setTotalRezults] = useState(1);
+    const [totalRezults, setTotalRezults] = useState(1); 
     const [totalPages, setTotalPages] = useState(1);
-    const [currentPage, SetCurrentPage] = useState(1);
+    const navigate = useNavigate();
+
+    const currentPage = useSelector((state)=>{
+      const {searchReducer} = state;
+      return searchReducer.page;
+    })
+
+    const dateRange = useSelector((state)=>{
+      const {searchReducer} = state;
+      return searchReducer.range;
+    })
 
     const [genryId,genryName] = useSelector((state)=>{
       const {searchReducer} = state;
@@ -25,7 +36,7 @@ const MovieListGenre = () => {
     })
 
     useEffect(()=>{
-      getSearchMovieList(genryId,regionId,currentPage,SetLoading).then(movies=>{
+      getSearchMovieList(genryId,regionId, dateRange, currentPage,SetLoading).then(movies=>{
       setMovieList(movies.results);
       setTotalRezults(movies.total_results);
       if(movies.total_pages>500){
@@ -34,26 +45,30 @@ const MovieListGenre = () => {
        setTotalPages(movies.total_pages); }
     });
 
-    }, [genryId,regionId,currentPage,])
+    }, [genryId,regionId,dateRange,currentPage,navigate])
    
-
+   
   return (
     !loading ? 
     <div className={styles.genrePage}>
       <div className={styles.genreInfo}>
       <p>Вибрано:</p>
-      {genryName ? <h2 className={styles.genreName}>{genryName}</h2>
-      : <h2 className={styles.genreName}>{regionName}</h2>
+      {regionName && <h2>«{regionName}»</h2> }
+      {genryName  && <h2>«{genryName}»</h2> }
+      {!genryName && !regionName 
+         && <h2>{dateRange[0]}-{dateRange[1]}</h2>
       }
       <p>Знайдено: {totalRezults}</p>
       </div>
       <div className={styles.pageInner}>
-       {movieList.map(item=>{
+       {totalRezults ? movieList.map(item=>{
           return <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id}/>
-        })}
+        })
+        : <div className={styles.notFound}>Нажаль, нічого не знайшли, спробуйте змінити параметри пошуку. 😞</div>
+      }
       </div>
       <div className={styles.pagination}>
-      <PaginationMovie pages = {totalPages} currentPage = {currentPage} handleCurrent = {SetCurrentPage}/>
+      <PaginationMovie pages = {totalPages}/>
       </div>     
     </div>
     : <CircularProgress className={styles.progress} size ={60}/>

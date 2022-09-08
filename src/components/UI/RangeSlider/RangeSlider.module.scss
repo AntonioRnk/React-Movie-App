@@ -1,0 +1,16 @@
+@import '../../../style/vars.scss';
+
+.inner {
+    display: flex;
+    justify-content: space-between;
+    .min,
+    .max {
+        @extend %os-light;
+        font-size: 18px;
+    }
+}
+
+.title{
+    @extend %os-light;
+    font-size: 20px;
+}

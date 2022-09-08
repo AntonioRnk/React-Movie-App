@@ -42,7 +42,7 @@ useEffect (()=>{
         <div className={styles.notTrailer}>Трейлерів не знайдено 😞</div>
       }
     </div>
-     : <CircularProgress className={styles.progress} size ={60}/>
+     : <CircularProgress className={styles.progress} size ={30}/>
   )
 }
 
