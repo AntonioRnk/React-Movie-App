@@ -3,7 +3,6 @@ import {useNavigate, useParams} from "react-router-dom";
 import { urlPosterImg } from '../../API/config';
 import { getMovieInformation } from '../../API/getMovieInformation';
 import { getActorsinMovie } from '../../API/getActorsInfo';
-import TrailerList from '../../components/TrailerList/TrailerList';
 import MovieListRecommends from '../../components/ListRecomeds/MovieListRecommends';
 import styles from './MoviePage.module.scss';
 import { useDispatch } from 'react-redux';
@@ -11,6 +10,8 @@ import { searchFromGenre } from '../../redux/actions';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { CircularProgress } from '@mui/material';
+import MoviePlayer from '../../components/MoviePlayer/MoviePlayer';
+import ModalMovie from '../../components/UI/Modal/ModalMovie';
 
 const MoviePage = () => {
     const param = useParams();
@@ -52,6 +53,7 @@ const MoviePage = () => {
                 : <div className={styles.notFound}>
                    <img className={styles.poster} src="https://i.ibb.co/3BdG0wD/notfound-image.jpg" alt="notFound" />
                 </div>}
+         <ModalMovie idMovie ={param.id}/>
             <div className={styles.total}>
                <p>Назва: «{movieInfo.title}»</p>
                <p>Дата релізу: {movieInfo.release_date}</p>
@@ -70,7 +72,7 @@ const MoviePage = () => {
                <p className={styles.overview}>{movieInfo.overview}</p>
             </div>
         </div>
-        <TrailerList idMovie={param.id}/>
+        <MoviePlayer idImdb ={movieInfo.imdb_id}/>
         <MovieListRecommends idMovie={param.id}/>
       </div>)
       : <CircularProgress className={styles.progress} size ={60}/>
