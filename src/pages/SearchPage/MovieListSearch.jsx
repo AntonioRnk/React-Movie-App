@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { getSearchMovieList} from '../../API/getSearchMovieList';
 import MovieListItem from '../../components/MovieListItem/MovieListItem';
 import PaginationMovie from '../../components/UI/Pagination/PaginationMovie';
-import styles from './MovieListGenre.module.scss';
+import styles from './MovieListSearch.module.scss';
  
-const MovieListGenre = () => {
+const MovieListSearch = () => {
 
     const [movieList, setMovieList] = useState([]);
     const [loading, SetLoading] = useState(true);
@@ -50,8 +50,8 @@ const MovieListGenre = () => {
    
   return (
     !loading ? 
-    <div className={styles.genrePage}>
-      <div className={styles.genreInfo}>
+    <div className={styles.searchPage}>
+      <div className={styles.searchInfo}>
       <p>Вибрано:</p>
       {regionName && <h2>«{regionName}»</h2> }
       {genryName  && <h2>«{genryName}»</h2> }
@@ -60,7 +60,7 @@ const MovieListGenre = () => {
       }
       <p>Знайдено: {totalRezults}</p>
       </div>
-      <div className={styles.pageInner}>
+      <div className={styles.searchInner}>
        {totalRezults ? movieList.map(item=>{
           return <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id}/>
         })
@@ -75,4 +75,4 @@ const MovieListGenre = () => {
   )
 }
 
-export default MovieListGenre
+export default MovieListSearch

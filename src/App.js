@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ActorPage from "./pages/ActorPage/ActorPage";
-import MovieListGenre from "./pages/GenrePage/MovieListGenre";
+import MovieListSearch from "./pages/SearchPage/MovieListSearch";
 import MovieListMain  from './pages/MainPage/MovieListMain';
 import MoviePage from "./pages/MoviePage/MoviePage";
 import SearchGenrySelect from "./components/UI/SearchSelect/SearchGenrySelect";
@@ -42,7 +42,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MovieListMain/>} />
         <Route path="/movies/:id" element={<MoviePage/>} />
-        <Route path="/searching" element={<MovieListGenre/>} />
+        <Route path="/searching" element={<MovieListSearch/>} />
         <Route path="/actor/:id" element={<ActorPage />} />
       </Routes>
       </div>
