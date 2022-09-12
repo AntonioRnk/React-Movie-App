@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import {useNavigate, useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { urlPosterImg } from '../../API/config';
 import { getMovieInformation } from '../../API/getMovieInformation';
 import { getActorsinMovie } from '../../API/getActorsInfo';
 import MovieListRecommends from '../../components/ListRecomeds/MovieListRecommends';
 import styles from './MoviePage.module.scss';
 import { useDispatch } from 'react-redux';
-import { searchFromGenre } from '../../redux/actions';
+import { searchFromGenre, searchPage } from '../../redux/actions';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { CircularProgress } from '@mui/material';
 import MoviePlayer from '../../components/MoviePlayer/MoviePlayer';
 import ModalMovie from '../../components/UI/Modal/ModalMovie';
+import Comments from '../../components/ListComments/Comments';
 
 const MoviePage = () => {
     const param = useParams();
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [movieInfo, setMovieInfo] = useState([]);
@@ -31,10 +31,10 @@ const MoviePage = () => {
         setActorInfo(topTenActors);
       });
     },[param.id])
-     
+
     function routeToGenre(id,name) {
       dispatch(searchFromGenre(id,name));
-      navigate("/searching");
+      dispatch(searchPage(1));
     }
 
   return (
@@ -60,23 +60,25 @@ const MoviePage = () => {
                <p>Рейтинг: {movieInfo.vote_average}</p>
                <p>Довжина фільму: {movieInfo.runtime} хв</p>
                <div className={styles.genres}> <p>Жанри:&nbsp;</p>
-                 {movieInfo.genres.map(item=>
-                    <p className={styles.genreItem} key={item.id} onClick={()=>{routeToGenre(item.id,item.name)}}>{item.name};
-                    &nbsp;</p>)}
+                <p>{movieInfo.genres.map(item=>
+                    <Link className={styles.genreItem} key={item.id} onClick={()=>{routeToGenre(item.id,item.name)}} to={'/searching'}>{item.name};&nbsp;</Link>
+                  )}</p>
                </div>
                <div className={styles.actors}> <p>Актори:&nbsp;</p>
                  <p className={styles.actorsList}>{actorInfo.map(item=>
-                    <span className={styles.actorsItem} key={item.id} onClick={()=>{navigate(`/actor/${item.id}`)}}>{item.name};
-                    &nbsp;</span>)}... та інші.</p>
+                    <Link className={styles.actorsItem} key={item.id} to={`/actor/${item.id}`}>{item.name};&nbsp;</Link>
+                    )}... та інші.</p>
                </div>
                <p className={styles.overview}>{movieInfo.overview}</p>
             </div>
         </div>
         <MoviePlayer idImdb ={movieInfo.imdb_id}/>
         <MovieListRecommends idMovie={param.id}/>
+        <Comments movieName={movieInfo.title} movieId={param.id}/>
       </div>)
       : <CircularProgress className={styles.progress} size ={60}/>
   )
+  
 }
 
 export default MoviePage

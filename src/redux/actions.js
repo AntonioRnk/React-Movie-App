@@ -1,18 +1,23 @@
-import { SEARCH_DATE, SEARCH_GENRE, SEARCH_IS_FOUND, SEARCH_QUERY, SEARCH_REGION, CURRENT_PAGE } from "./types";
+import { SEARCH_DATE, SEARCH_GENRE, SEARCH_IS_FOUND, SEARCH_QUERY, SEARCH_REGION, CURRENT_PAGE, SEARCH_ACTOR } from "./types";
 
-export const searchFromGenre = (genryId,genryName) =>{
+export const searchFromGenre = (id,name) =>{
     return {
         type: SEARCH_GENRE,
-        genryId,
-        genryName,
+        infoGenre: {id,name}
     }
 }
 
-export const searchFromRegion = (regionId,regionName) =>{
+export const searchFromRegion = (id,name) =>{
     return {
         type: SEARCH_REGION,
-        regionId,
-        regionName,
+        infoRegion: {iso_639_1 : id, english_name : name}
+    }
+}
+
+export const searchFromActor = (id,name) =>{
+    return {
+        type: SEARCH_ACTOR,
+        infoActor: {id, name}
     }
 }
 

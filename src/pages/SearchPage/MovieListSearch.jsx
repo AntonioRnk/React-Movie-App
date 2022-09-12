@@ -25,18 +25,18 @@ const MovieListSearch = () => {
       return searchReducer.range;
     })
 
-    const [genryId,genryName] = useSelector((state)=>{
+    const [listGenre] = useSelector((state)=>{
       const {searchReducer} = state;
-      return [searchReducer.genryId, searchReducer.genryName];
+      return searchReducer.infoGenre;
     })
 
-    const [regionId,regionName] = useSelector((state)=>{
+    const [listRegion] = useSelector((state)=>{
       const {searchReducer} = state;
-      return [searchReducer.regionId, searchReducer.regionName];
+      return searchReducer.infoRegion;
     })
 
     useEffect(()=>{
-      getSearchMovieList(genryId,regionId, dateRange, currentPage,SetLoading).then(movies=>{
+      getSearchMovieList(listGenre.id,listRegion.iso_639_1, dateRange, currentPage,SetLoading).then(movies=>{
       setMovieList(movies.results);
       setTotalRezults(movies.total_results);
       if(movies.total_pages>500){
@@ -45,17 +45,16 @@ const MovieListSearch = () => {
        setTotalPages(movies.total_pages); }
     });
 
-    }, [genryId,regionId,dateRange,currentPage,navigate])
-   
+    }, [listGenre.id,listRegion.iso_639_1,dateRange,currentPage,navigate])
    
   return (
     !loading ? 
     <div className={styles.searchPage}>
       <div className={styles.searchInfo}>
       <p>Вибрано:</p>
-      {regionName && <h2>«{regionName}»</h2> }
-      {genryName  && <h2>«{genryName}»</h2> }
-      {!genryName && !regionName 
+      {listRegion.english_name && <h2>«{listRegion.english_name}»</h2> }
+      {listGenre.name  && <h2>«{listGenre.name}»</h2> }
+      {!listGenre.name && !listRegion.english_name
          && <h2>{dateRange[0]}-{dateRange[1]}</h2>
       }
       <p>Знайдено: {totalRezults}</p>
