@@ -7,8 +7,7 @@ export const getRecomendationMovie = async (id)=>{
         language: 'uk', 
         page: 1,
     }})
-    const movieList = await getMovie.data.results;
-    return movieList;
+    return getMovie.data.results;
 }
 
 export const getCommentsMovie = async (id,isLoading)=>{
@@ -18,7 +17,6 @@ export const getCommentsMovie = async (id,isLoading)=>{
         language: 'us',
         page: 1, 
     }})
-    const movieList = await getMovie.data.results;
     isLoading(false);
-    return movieList;
+    return getMovie.data.results;
 }

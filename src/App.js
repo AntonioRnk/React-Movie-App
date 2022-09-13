@@ -7,7 +7,7 @@ import 'normalize.css';
 import './style/App.scss';
 import Header from "./components/UI/Header/Header";
 import LeftApp from "./components/UI/LeftApp/LeftApp";
-
+import AboutPage from "./pages/About/AboutPage";
 
 function App() {
 
@@ -22,6 +22,7 @@ function App() {
         <Route path="/movies/:id" element={<MoviePage/>} />
         <Route path="/searching" element={<MovieListSearch/>} />
         <Route path="/actor/:id" element={<ActorPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
       </div>
      </div>

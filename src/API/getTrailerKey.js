@@ -7,7 +7,17 @@ export const getTrailerKey = async(id,isLoading)=>{
     {params: {
         language: 'uk',
     }})
-    const key  = await movieKey.data.results;
-    isLoading(false);
-    return key;
+    
+    if(movieKey.data.results.length){
+        isLoading(false);
+        return movieKey.data.results;
+    }
+    else{
+        const movieKeyUS = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`,
+        {params: {
+            language: 'us',
+        }})
+        isLoading(false);
+        return movieKeyUS.data.results;
+    }
 }

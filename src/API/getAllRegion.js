@@ -6,7 +6,5 @@ export const getAllRegion = async()=>{
     {params: {
         language: 'uk', 
     }})
-    const regions = await regionDetails.data;
-
-    return regions;
+    return regionDetails.data;
 }

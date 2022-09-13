@@ -11,6 +11,5 @@ export const getSearchMovieList = async (search)=>{
         include_adult: false,
         page: 1,
     }})
-    const movieList = await getSearchMovie.data.results;
-    return movieList;
+    return getSearchMovie.data.results;
 }

@@ -6,6 +6,5 @@ export const getGenreFullList = async ()=>{
     {params: {
         language: 'uk', 
     }})
-    const movieList = await getMovie.data.genres;
-    return movieList;
+    return getMovie.data.genres;
 }

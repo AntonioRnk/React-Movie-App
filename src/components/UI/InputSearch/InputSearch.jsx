@@ -33,11 +33,11 @@ const InputSearch = () => {
   return (
     <form className={styles.search} action="submit" onSubmit={searchRequest}>    
         <input type="text"
-        placeholder='Пошук тут ...'
+        placeholder={'Search movie ...'}
         value={searchParam}
         onChange={(e)=>SetSearchParam(e.target.value)}
          />
-        <button type='submit'>Пошук</button>
+        <button type='submit'>Search</button>
     </form> 
   )
 }

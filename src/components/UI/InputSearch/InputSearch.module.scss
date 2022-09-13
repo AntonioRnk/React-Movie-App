@@ -7,20 +7,26 @@
     background: #444;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
-    border: 1px solid #fff;
+    border: 1px solid rgb(166, 166, 166);
 
     input {
         width: 370px;
         padding: 10px 5px;
         float: left;
-        color: #ccc;
+        color: #fff;
         border: 0;
         background: transparent;
         border-radius: 3px 0 0 3px;
+        @extend %os-light;
+        font-size: 17px;
+        letter-spacing: 1.5px;
 
         &:focus {
             outline: 0;
             background: transparent;
+          }
+        &:focus::placeholder {
+            color: transparent;
           }
       }
 
@@ -33,10 +39,11 @@
         height: 40px;
         width: 120px;
         color: #fff;
+        font-size: 17px;
         background: transparent;
         border-left: 1px solid #fff;
         border-radius: 0 3px 3px 0;
-
+        transition: all 0.3s;
         &:hover {
             background: #fff;
             color: #444;

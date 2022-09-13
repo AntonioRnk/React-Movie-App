@@ -8,7 +8,6 @@ export const getMovieInformation = async(id, isLoading)=>{
     {params: {
         language: 'uk',
     }})
-    const movieInfo = await getMovie.data;
     isLoading(false);
-    return movieInfo;
+    return getMovie.data;
 }

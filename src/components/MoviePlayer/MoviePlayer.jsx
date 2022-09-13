@@ -1,28 +1,53 @@
 import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import { getPlayerMovieUrl } from '../../API/getPlayerMovieUrl';
+import { getPlayerMovieUrl, testPlayerMovieUrlR} from '../../API/getPlayerMovieUrl';
+import SwitchLanguage from '../UI/SwitchLanguage/SwitchLanguage';
 import styles from './MoviePlayer.module.scss';
 
 const MoviePlayer = ({idImdb}) => {
 
-const [movieItem, setMovieItem] = useState([]);
+const [movieItem, setMovieItem] = useState('');
 const [loading, SetLoading] = useState(true);
+const [checked, setChecked] = useState(true);
 
 useEffect (()=>{
+  if(checked){
     getPlayerMovieUrl(idImdb,SetLoading).then(rezult=>{
-        setMovieItem(rezult); 
+        if (rezult){
+          setMovieItem(rezult.iframe_src); 
+        }
+        else {setMovieItem(rezult)} 
     })
-  },[idImdb])
+  }
+  else {
+    testPlayerMovieUrlR(idImdb).then(rezult=>{
+       if(rezult){
+        setMovieItem(`https://94.annacdn.cc/qefiHFXgjMpF?imdb_id=${idImdb}`);
+       }
+       else {setMovieItem(rezult)}
+    }).catch(()=>{
+       setMovieItem('');
+    })
+  }
+  },[idImdb,checked])
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
   return (
     !loading ? 
     <div className={styles.moviePlayer}>
-        {movieItem ? <iframe src={movieItem.iframe_src} width="100%" height="500" frameBorder="0" title={'kino'} allowFullScreen loading="lazy"></iframe>
+      <div className={styles.language}>
+        <p>Оберіть мову:</p>
+        <SwitchLanguage checked={checked} handleChange={handleChange}/>
+      </div>
+        {movieItem ? <iframe src={movieItem} width="100%" height="500" frameBorder="0" title={'kino'} allowFullScreen loading="lazy"></iframe>
                    : <div className={styles.notPlayer}> Не знайдено 😞</div>
         }
     </div>
     : <div className={styles.moviePlayer}>
-      <CircularProgress size ={30} className={styles.progress}/>
+      <CircularProgress size ={50} className={styles.progress}/>
     </div>
   )
 }

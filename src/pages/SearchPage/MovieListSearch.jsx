@@ -35,8 +35,13 @@ const MovieListSearch = () => {
       return searchReducer.infoRegion;
     })
 
+    const [listActor] = useSelector((state)=>{
+      const {searchReducer} = state;
+      return searchReducer.infoActor;
+    })
+
     useEffect(()=>{
-      getSearchMovieList(listGenre.id,listRegion.iso_639_1, dateRange, currentPage,SetLoading).then(movies=>{
+      getSearchMovieList(listGenre.id,listRegion.iso_639_1, dateRange, listActor.id, currentPage,SetLoading).then(movies=>{
       setMovieList(movies.results);
       setTotalRezults(movies.total_results);
       if(movies.total_pages>500){
@@ -45,7 +50,7 @@ const MovieListSearch = () => {
        setTotalPages(movies.total_pages); }
     });
 
-    }, [listGenre.id,listRegion.iso_639_1,dateRange,currentPage,navigate])
+    }, [listGenre.id,listRegion.iso_639_1,dateRange,listActor.id,currentPage,navigate])
    
   return (
     !loading ? 

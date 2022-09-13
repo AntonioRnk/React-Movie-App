@@ -7,8 +7,7 @@ export const getPopularMovie = async ()=>{
         language: 'uk', 
         page: 1,
     }})
-    const movieList = await getMovie.data.results;
-    return movieList;
+    return getMovie.data.results;
 }
 
 
@@ -18,7 +17,6 @@ export const getPopularPeople = async ()=>{
         language: 'uk', 
         page: 1,
     }})
-    const movieList = await getMovie.data.results;
-    return movieList;
+    return getMovie.data.results;
 }
 

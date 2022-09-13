@@ -58,7 +58,6 @@ ul { list-style: none; padding-left: 0;}
       font-size: 22px;
     }
   }
-
 }
 
 // custom select styles
@@ -95,4 +94,20 @@ ul { list-style: none; padding-left: 0;}
 
 .swiper {
   padding-right: 15px !important;
+}
+
+// switch
+
+.MoviePage_moviePage__tOasz span {
+  @extend %os-regular;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+//inputsearch
+
+.MuiOutlinedInput-root {
+  
+  padding: 0 !important;
+  // color: #fff !important;
 }

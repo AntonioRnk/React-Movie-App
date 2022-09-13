@@ -3,8 +3,7 @@ import { apiKey } from "./config";
 
 export const getActorsinMovie = async(idMovie)=>{
     const actorsMovie= await axios.get(`https://api.themoviedb.org/3/movie/${idMovie}/credits?api_key=${apiKey}`)
-    const actorsInfo = await actorsMovie.data.cast;
-    return actorsInfo;
+    return actorsMovie.data.cast;
 }
 
 export const getActorDetails = async(idActor,isLoading)=>{
@@ -13,9 +12,8 @@ export const getActorDetails = async(idActor,isLoading)=>{
     {params: {
         language: 'uk', 
     }})
-    const actorInfo = await actorsDetails.data;
     isLoading(false);
-    return actorInfo;
+    return actorsDetails.data;
 }
 
 
@@ -24,7 +22,6 @@ export const getActorPlay = async(idActor)=>{
     {params: {
         language: 'uk', 
     }})
-    const actorInfo = await actorsPlay.data.cast;
-    return actorInfo;
+    return actorsPlay.data.cast;
 }
 
