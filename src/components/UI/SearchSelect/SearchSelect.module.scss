@@ -1,4 +1,11 @@
+@import '../../../style/vars.scss';
+
 .selectForm{
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
     padding: 15px 0;
+}
+
+.select{
+        color: #fff !important;
+        background: rgba(103, 101, 113, 0.44) !important;
 }

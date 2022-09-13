@@ -31,6 +31,7 @@ const SearchSelect = ({nameList,selectList,action,value,index,current}) => {
         <Select
           value={current[index]}
           onChange={changeHande}
+          className ={styles.select}
         >
           <MenuItem value=''>
             <em>Не вибрано</em>

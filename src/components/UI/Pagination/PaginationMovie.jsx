@@ -3,6 +3,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchPage } from '../../../redux/actions';
+import styles from './Pagination.module.scss';
 
 const PaginationMovie = ({pages}) => {
   
@@ -19,7 +20,8 @@ const PaginationMovie = ({pages}) => {
   
   return (
     <Stack spacing={2}>
-      <Pagination 
+      <Pagination
+       className={styles.pagination} 
        count={pages} 
        variant="outlined" 
        shape="rounded" 
