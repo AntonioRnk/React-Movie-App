@@ -9,15 +9,14 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 850,
+  width: '90%',
+  maxWidth: '850px',
   bgcolor: 'rgba(63, 61, 75, 0.98)',
-  border: '2px solid rgba(255, 255, 255, 0.14)',
   boxShadow: 24,
   overflowY:"auto",
   maxHeight: "90%",
-  padding: "10px 0"
+  padding: "0 5px 0 0"
 };
-
 
 const ModalMovie = ({idMovie}) => {
   const [open, setOpen] = useState(false);
@@ -38,6 +37,5 @@ const ModalMovie = ({idMovie}) => {
     </div>
   );
 }
-
 
 export default ModalMovie

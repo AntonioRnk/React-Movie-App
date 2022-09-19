@@ -1,0 +1,9 @@
+@import '../../../style/vars.scss';
+
+.switch {
+  span {
+    @extend %os-regular;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}

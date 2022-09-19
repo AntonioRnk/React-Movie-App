@@ -1,11 +1,22 @@
 @import '../../../style/vars.scss';
 
 .selectForm{
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
-    padding: 15px 0;
+  width: 95%;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.14);
+  padding: 15px 10px;
+}
+
+.selectInner{
+  width: 95% !important;
 }
 
 .select{
-        color: #fff !important;
-        background: rgba(103, 101, 113, 0.44) !important;
+  color: #fff !important;
+  background: rgba(103, 101, 113, 0.44) !important;
+}
+
+@media screen and (max-width: 600px) {
+  .selectForm{
+    padding: 10px 10px;
+  }
 }

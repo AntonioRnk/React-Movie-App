@@ -25,8 +25,8 @@ const PaginationMovie = ({pages}) => {
        count={pages} 
        variant="outlined" 
        shape="rounded" 
-       size="large"
-       boundaryCount={4}
+       size="medium"
+       boundaryCount={1}
        showFirstButton 
        showLastButton
        page={currentPage} 

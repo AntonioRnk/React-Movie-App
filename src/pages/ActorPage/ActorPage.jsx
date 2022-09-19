@@ -28,7 +28,7 @@ const ActorPage = () => {
 
   return (
   !loading ?
-  <div>
+  <div className={styles.actorPageInner}>
     {actorInfo.profile_path 
     ? <div className={styles.actorPage}>
        <div className={styles.inner}>
@@ -47,7 +47,7 @@ const ActorPage = () => {
         </div>
        </div>
         {actorPlay.length >= 4 &&
-        <div>
+        <div className={styles.slidePlay}>
         <h3>Приймав(ла) участь у фільмах:</h3> 
         <Slider listItem={actorPlay}></Slider>
         </div>}

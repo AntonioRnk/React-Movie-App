@@ -1,16 +1,27 @@
 @import '../../../style/vars.scss';
 
 .inner {
-    display: flex;
-    justify-content: space-between;
-    .min,
-    .max {
-        @extend %os-light;
-        font-size: 18px;
-    }
+  display: flex;
+  justify-content: space-between;
+}
+
+.min,
+.max {
+  @extend %os-light;
+  font-size: 18px;
+}
+
+.boxInner{
+  width: 90% !important;
 }
 
 .title{
-    @extend %os-light;
-    font-size: 20px;
+  @extend %os-light;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .title{
+    margin: 10px 0;
+  }
 }

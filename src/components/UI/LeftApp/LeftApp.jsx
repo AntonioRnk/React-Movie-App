@@ -3,13 +3,15 @@ import { useState } from 'react';
 import { getAllRegion } from '../../../API/getAllRegion';
 import { getGenreFullList } from '../../../API/getGenreFullList';
 import { getPopularPeople } from '../../../API/getPopularMovie';
-import { useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 import RangeSlider from '../RangeSlider/RangeSlider';
 import SearchSelect from '../SearchSelect/SearchSelect';
-import { searchFromActor, searchFromGenre, searchFromRegion } from '../../../redux/actions';
+import { searchFromActor, searchFromGenre, searchFromRegion, searchIsFound, searchListMovies } from '../../../redux/actions';
+import styles from './LeftApp.module.scss';
+import { Link } from 'react-router-dom';
 
 const LeftApp = () => {
-
+  const dispatch = useDispatch();
   const [genreList, SetGenreList] = useState([]);
   const [regionList, SetRegionList] = useState([]);
   const [peopleList, SetPeopleList] = useState([]);
@@ -41,9 +43,21 @@ const LeftApp = () => {
     return searchReducer.infoRegion;
   })
 
+  function handleCleanSearch(){
+    dispatch(searchListMovies([]));
+    dispatch(searchIsFound(true));
+  }
 
   return (
-    <div className="app__left">
+    <div className={styles.left}>            
+    <ul className={styles.list}>
+      <li className={styles.item}>
+        <Link className={styles.link} onClick={handleCleanSearch} to={'/'}>Головна</Link>
+        </li>
+      <li className={styles.item}>
+        <Link className={styles.link} to={'/about'}>Про проект</Link>
+      </li>
+    </ul>  
     <h3>Параметри пошуку:</h3>
     <SearchSelect 
        nameList={'Жанр'} 

@@ -1,0 +1,10 @@
+.swiper {
+  padding-right: 15px !important; 
+}
+
+@media screen and (max-width: 820px) {
+  .swiper {
+    width: 570px;
+    margin: 0 auto;
+  }
+}  

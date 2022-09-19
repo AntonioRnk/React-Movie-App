@@ -26,7 +26,7 @@ const SearchSelect = ({nameList,selectList,action,value,index,current}) => {
 
   return (
     <div className={styles.selectForm}>
-      <FormControl variant="filled" sx={{ m: 1, minWidth: 250 }}>
+      <FormControl className={styles.selectInner} variant="filled" sx={{ m: 1, width: '100%' }}>
         <InputLabel>{nameList}</InputLabel>
         <Select
           value={current[index]}

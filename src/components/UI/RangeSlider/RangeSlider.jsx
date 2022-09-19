@@ -41,7 +41,7 @@ const RangeSlider = () => {
   };
 
   return (
-    <Box sx={{ width: 250 }}>
+    <Box className={styles.boxInner} sx={{ width: 250 }}>
      <h4 className={styles.title}>Дата виходу у прокат:</h4>
       <Slider
         min = {1900}

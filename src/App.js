@@ -3,11 +3,11 @@ import ActorPage from "./pages/ActorPage/ActorPage";
 import MovieListSearch from "./pages/SearchPage/MovieListSearch";
 import MovieListMain  from './pages/MainPage/MovieListMain';
 import MoviePage from "./pages/MoviePage/MoviePage";
-import 'normalize.css';
-import './style/App.scss';
 import Header from "./components/UI/Header/Header";
 import LeftApp from "./components/UI/LeftApp/LeftApp";
 import AboutPage from "./pages/About/AboutPage";
+import 'normalize.css';
+import './style/App.scss';
 
 function App() {
 

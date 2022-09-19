@@ -1,6 +1,15 @@
 .pagination {
-    color: #fff !important;
-    button {
-        background-color: rgb(35, 35, 35);
+  color: #fff !important;
+  
+  button {
+    background-color: rgb(35, 35, 35);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .pagination {
+    li{
+      padding-bottom: 10px;
     }
+  }
 }

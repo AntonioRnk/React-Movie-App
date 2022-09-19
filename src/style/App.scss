@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&display=swap');
 @import '../style/vars.scss';
 
-html{
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
+  box-sizing: border-box;
   color: #fff;
   @extend %os-regular;
   -webkit-font-smoothing: antialiased;
@@ -14,6 +11,10 @@ body {
 }
 
 ul { list-style: none; padding-left: 0;}
+
+label {
+  color: #fff !important;
+}
 
 .app {
   position: relative;
@@ -24,27 +25,6 @@ ul { list-style: none; padding-left: 0;}
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  &__left{
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
-    background: rgb(35, 35, 35);
-    border-right: 1px solid rgba(255, 255, 255, 0.14);
-    position: absolute;
-    padding:70px 10px 15px;
-    top: 0;
-    bottom: 0;
-
-    h3 {
-      font-size: 24px;
-      letter-spacing: 1px;
-      @extend %os-regular;
-      margin-bottom: 0;
-    }
-  }
 
   &__right{
     display: flex;
@@ -60,28 +40,26 @@ ul { list-style: none; padding-left: 0;}
   }
 }
 
-label {
-  color: #fff !important;
+@media screen and (max-width: 1400px) {
+  .app__right{
+    margin-left: 270px;
+  }
 }
 
-// progressbar 
-
-.css-kcj98w {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
+@media screen and (max-width: 1300px) {
+  .app__right{
+    margin-left: 50px;
+  }
 }
 
-// slider-swipe
-
-.swiper {
-  padding-right: 15px !important;
+@media screen and (max-width: 1080px) {
+  .app__right{
+    margin: 0px 10px;
+  }
 }
 
-// switch
-
-.MoviePage_moviePage__tOasz span {
-  @extend %os-regular;
-  font-size: 18px;
-  line-height: 1.5;
+@media screen and (max-width: 600px) {
+  .app__right{
+    margin: 0px 5px;
+  }
 }

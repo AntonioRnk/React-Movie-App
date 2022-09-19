@@ -44,8 +44,7 @@ export const searchFromDate = (range) =>{
 }
 
 export const searchPage = (page) =>{
-    return {
-        
+    return {     
         type: CURRENT_PAGE,
         page,
     }

@@ -56,7 +56,7 @@ const MovieListSearch = () => {
     !loading ? 
     <div className={styles.searchPage}>
       <div className={styles.searchInfo}>
-      <p>Вибрано:</p>
+      <p className={styles.chose}>Вибрано:</p>
       {listRegion.english_name && <h2>«{listRegion.english_name}»</h2> }
       {listGenre.name  && <h2>«{listGenre.name}»</h2> }
       {!listGenre.name && !listRegion.english_name

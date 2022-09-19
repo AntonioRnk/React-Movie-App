@@ -1,52 +1,57 @@
 @import '../../style/vars.scss';
 
 .aboutInner{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: $base-width-content;
-    background: rgba(103, 101, 113, 0.54);
-    border: 1px solid $base-border-color;
-    backdrop-filter: blur(20px);
-    padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: $base-width-content;
+  background: rgba(103, 101, 113, 0.54);
+  border: 1px solid $base-border-color;
+  backdrop-filter: blur(20px);
+  padding: 20px;
 
-    h2 {
-        font-size: 28px;
-        margin: 10px;
+  h2 {
+    font-size: 38px;
+    margin: 10px;
+  }
+
+  p {
+    text-align: left;
+    font-size: 18px;
+    line-height: 28px;
+    text-indent: 15px;
+    letter-spacing: 1.5px;
+
+    &::first-letter {
+      font-size: 180%;
+      font-weight: bold;
     }
 
-    p {
-        text-align: left;
-        font-size: 18px;
-        line-height: 28px;
-        text-indent: 15px;
-        letter-spacing: 1.5px;
-        &::first-letter {
-            font-size: 180%;
-            font-weight: bold;
-          }
-        span{
-            font-size: 110%;
-            color: rgb(4, 219, 68);
-            font-weight: bold;
-        }
+    span{
+      font-size: 110%;
+      color: rgb(4, 219, 68);
+      font-weight: bold;
     }
+  }
 }
 
 .about {
-    margin-bottom: 0;
+  margin-bottom: 0;
 
-    a{
-        margin-left: 5px;
-        color: #66bdff;
-        font-size: 110%;
-        font-weight: bold;
-        text-decoration: none;
-          cursor: pointer;
-          &:hover{
-              color: #6578d7;
-          }
+  a{
+    // margin-left: 5px;
+    display: inline;
+    margin: 0;
+    color: #66bdff;
+    font-size: 110%;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    
+    &:hover{
+      color: #6578d7;
     }
+  }
 }

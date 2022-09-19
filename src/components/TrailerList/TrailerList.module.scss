@@ -1,51 +1,52 @@
 @import '../../style/vars.scss';
 
-  .movieTrailer{
-    text-align: center;
-    display: flex;
-    
-    .inner{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      width: 100%;
-    }
-    .block{
-      width: 100%;
-     }  
-  }
-  
-  .notTrailer{
-    padding: 15px;
-    margin: 0 auto;
-  }
+.movieTrailer{
+  text-align: center;
+  display: flex;
+}
 
-  .buttonShow {
-    margin-top: 5px;
-    width: 820px;
-    padding: 0.6em 2em;
-    border: 1px solid rgba(255, 255, 255, 0.34);
-    outline: none;
-    color: rgb(255, 255, 255);
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    transition: all 0.3s;
+.inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
 
-    &:hover {
-      background-color: rgb(34, 34, 34);
-    }
+.block{
+  width: 100%;
+}  
+
+.notTrailer{
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.buttonShow {
+  margin: 5px;
+  width: 100%;
+  padding: 0.6em 2em;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: all 0.3;
+
+  &:hover {
+    background-color: rgb(34, 34, 34);
   }
-  
-  .progress {
-    margin: 0 auto;
-  }
+}
+
+.progress {
+  margin-left: 50%;
+}
   
   
   
