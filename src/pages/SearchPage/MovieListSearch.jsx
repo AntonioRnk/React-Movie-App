@@ -1,5 +1,5 @@
 import { CircularProgress} from '@mui/material';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getSearchMovieList} from '../../API/getSearchMovieList';
@@ -13,7 +13,11 @@ const MovieListSearch = () => {
     const [loading, SetLoading] = useState(true);
     const [totalRezults, setTotalRezults] = useState(1); 
     const [totalPages, setTotalPages] = useState(1);
+    const [size, setSize] = useState([337,232]);
+    const [width,setWidth] = useState(0);
+    
     const navigate = useNavigate();
+    const ref = useRef(null);
 
     const currentPage = useSelector((state)=>{
       const {searchReducer} = state;
@@ -50,10 +54,21 @@ const MovieListSearch = () => {
        setTotalPages(movies.total_pages); }
     });
 
-    }, [listGenre.id,listRegion.iso_639_1,dateRange,listActor.id,currentPage,navigate])
-   
+      setWidth(ref.current.offsetWidth);
+      if(width<=642){
+        setSize([380,270]);
+      }
+      if(width<600){
+        setSize([450,325]);
+      }
+      if(width>642){
+        setSize([337,232]);
+      }
+    }, [listGenre.id,listRegion.iso_639_1,dateRange,listActor.id,currentPage,navigate,width])
+    
   return (
-    !loading ? 
+    <div ref={ref} className={styles.totalInner}>
+    {!loading ? 
     <div className={styles.searchPage}>
       <div className={styles.searchInfo}>
       <p className={styles.chose}>Вибрано:</p>
@@ -66,7 +81,7 @@ const MovieListSearch = () => {
       </div>
       <div className={styles.searchInner}>
        {totalRezults ? movieList.map(item=>{
-          return <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id}/>
+          return <MovieListItem path={item.poster_path} title = {item.title} key = {item.id} id = {item.id} height={size[0]} width={size[1]}/>
         })
         : <div className={styles.notFound}>Нажаль, нічого не знайшли, спробуйте змінити параметри пошуку. 😞</div>
       }
@@ -75,7 +90,8 @@ const MovieListSearch = () => {
       <PaginationMovie pages = {totalPages}/>
       </div>     
     </div>
-    : <CircularProgress className={styles.progress} size ={60}/>
+    : <CircularProgress className={styles.progress} size ={60}/>}
+    </div>
   )
 }
 

@@ -1,13 +1,12 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import styles from './AboutPage.module.scss';
 
 const AboutPage = () => {
-    console.log(styles);
+
   return (
     <div className={styles.aboutInner}>
         <h2 className={styles.title}>Про проект</h2>
-        <p className={styles.about}>Проект створено виключно в навчальних цілях. Для демонстрації можливостей бібліотеки <span>"React"</span>. 
+        <p className={styles.about}>Даний проект створено в навчальних цілях, для демонстрації можливостей бібліотеки <span>"React"</span>. 
         Весь розміщений на сайті матеріал являє собою контент, що знаходиться у вільному доступі для перегляду та скачування в мережі Інтернет.
         Технології, які використовувались на проекті: 
         <a href={'https://ru.reactjs.org/'}> React</a>, 

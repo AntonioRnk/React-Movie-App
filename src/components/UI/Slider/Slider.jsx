@@ -30,7 +30,6 @@ const Slider = ({listItem}) => {
           820: {
             slidesPerView: 3
           },
-          // desktop >= 991
           1080: {
             slidesPerView: 4
           }
@@ -38,9 +37,9 @@ const Slider = ({listItem}) => {
         >
        {listElement.map(item=>{
           return item.poster_path && 
-                  <SwiperSlide key={item.id}>
-                    <MovieListItem path={item.poster_path} title = {item.title} id = {item.id}/> 
-                  </SwiperSlide>
+                  <SwiperSlide key={item.id} className={styles.slide}>
+                    <MovieListItem path={item.poster_path} title = {item.title} id = {item.id} height={347} width={232}/> 
+            </SwiperSlide>
         })} 
      </Swiper> 
   )

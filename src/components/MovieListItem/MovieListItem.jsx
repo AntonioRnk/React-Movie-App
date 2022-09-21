@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { urlPosterImg } from '../../API/config';
 import styles from './MovieListItem.module.scss'
 
-const MovieListItem = ({path,title,id}) => {
+const MovieListItem = ({path,title,id,height,width}) => {
 const navigate = useNavigate();
 
   return (
@@ -15,14 +15,17 @@ const navigate = useNavigate();
          className={styles.poster} 
          alt={title}
          effect="blur"
-         height={337}
+         height={height}
          src={urlPosterImg+path}
-         width={227} />
-        : <div className={styles.notFound}>
-             <p>{title}</p>
-             <img className={styles.poster} src="https://i.ibb.co/3BdG0wD/notfound-image.jpg" alt="notFound" />
-          </div>
-      }
+         width={width} />
+        : <LazyLoadImage
+            className={styles.poster} 
+            alt={'notFound'}
+            effect="blur"
+            height={height}
+            src={'https://i.ibb.co/3BdG0wD/notfound-image.jpg'}
+            width={width} />
+          }
       <div className={styles.play} >
         <img src="https://freesvg.org/img/playbuttonclear.png" alt="play" />
       </div>

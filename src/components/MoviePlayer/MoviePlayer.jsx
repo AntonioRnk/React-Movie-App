@@ -20,7 +20,7 @@ useEffect (()=>{
     })
   }
   else {
-    testPlayerMovieUrlR(idImdb).then(rezult=>{
+    testPlayerMovieUrlR(idImdb,SetLoading).then(rezult=>{
        if(rezult){
         setMovieItem(`https://94.annacdn.cc/qefiHFXgjMpF?imdb_id=${idImdb}`);
        }
