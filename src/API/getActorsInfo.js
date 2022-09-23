@@ -16,7 +16,6 @@ export const getActorDetails = async(idActor,isLoading)=>{
     return actorsDetails.data;
 }
 
-
 export const getActorPlay = async(idActor)=>{
     const actorsPlay = await axios.get(`https://api.themoviedb.org/3/person/${idActor}/movie_credits?api_key=${apiKey}`,
     {params: {

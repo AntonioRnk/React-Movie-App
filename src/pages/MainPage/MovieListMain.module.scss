@@ -3,6 +3,9 @@
 .listInner{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  max-width: $base-width-content;
+  width: 100%;
 }
 
 .movieList {
@@ -28,6 +31,7 @@
   backdrop-filter: blur(25px);
   background: rgba(103, 101, 113, 0.34);
   border: 1px solid $base-border-color;
+  width: $base-width-content + 20px;
   border-radius: 20px;
   padding: 10px;
   margin-bottom: 20px;
@@ -35,16 +39,26 @@
   font-weight: 400;
 }
 
+.progress {
+  margin-top: 100px;
+}
+
 @media screen and (max-width: 1080px) {
   .movieList{
     width: $medium-width-content;
     gap: 47px;
+  }
+  .listName{
+    width: $medium-width-content + 20px;
   }
 }
 
 @media screen and (max-width: 870px) {
   .movieList{
     width: $small-width-content;
+  }
+  .listName{
+    width: $small-width-content + 20px;
   }
 }
 
@@ -58,5 +72,10 @@
     width: 100%;
     flex-direction: column;
     padding: 20px 0;
+  }
+  .listName{
+    max-width: $small-width-content;
+    width: 100%;
+    padding: 10px 0;
   }
 }

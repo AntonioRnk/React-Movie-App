@@ -25,7 +25,6 @@ const ActorPage = () => {
 
       },[param.id])
 
-
   return (
   !loading ?
   <div className={styles.actorPageInner}>

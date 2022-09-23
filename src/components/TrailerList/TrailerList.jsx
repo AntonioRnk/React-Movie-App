@@ -32,7 +32,7 @@ useEffect (()=>{
         &&  <div className={styles.inner}> 
             {trailerItems.map((trailer)=>{
                 return  <div className={styles.block} key={trailer.id}>
-                         <iframe key={trailer.id} width="100%" height="500" src= {`https://www.youtube.com/embed/${trailer.key}`} title={trailer.name} allowfullscreen loading="lazy"/>
+                         <iframe key={trailer.id} width="100%" height="500" src= {`https://www.youtube.com/embed/${trailer.key}`} title={trailer.name} allowFullScreen loading="lazy"/>
                         </div> 
             })}
             <button className={styles.buttonShow} onClick={()=>{setIsSearch(!isSearch)}}>Cховати</button> 

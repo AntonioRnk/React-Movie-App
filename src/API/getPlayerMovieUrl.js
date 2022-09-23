@@ -14,8 +14,13 @@ export const getPlayerMovieUrl= async(idImdb, isLoading)=>{
 }
 
 export const testPlayerMovieUrlR= async(idImdb,isLoading)=>{
-    isLoading(true);
-    const moviePlayer = await axios.get(`https://94.annacdn.cc/qefiHFXgjMpF?imdb_id=${idImdb}`);
-    isLoading(false);
-    return moviePlayer ;
+    try {
+      isLoading(true);
+      const moviePlayer = await axios.get(`https://94.annacdn.cc/qefiHFXgjMpF?imdb_id=${idImdb}`);
+      return moviePlayer;
+    } catch (err) {
+        console.log(err);
+    } finally {
+        isLoading(false);
+    }
 }

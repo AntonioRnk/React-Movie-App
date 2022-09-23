@@ -15,6 +15,7 @@ const style = {
   boxShadow: 24,
   overflowY:"auto",
   maxHeight: "90%",
+  minHeight: "40px",
   padding: "0 5px 0 0"
 };
 
