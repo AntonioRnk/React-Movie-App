@@ -24,10 +24,11 @@ This site was built using [GitHub Pages](antoniornk.github.io/ReactSearchFilms/)
 
 ## Screenshots, Preview
 
-![Main-page](https://i.ibb.co/wRSBhWF/first-desktop.png)
+![Main-page](https://s1.hostingkartinok.com/uploads/images/2022/09/1a2b5bbb9edcdbb237e530eb211c220a.png)
 
-![Search-page](https://i.ibb.co/GVYJ98Y/search-page.png)
+![Search-page](https://s1.hostingkartinok.com/uploads/images/2022/09/bfdf73da9296160f44f3772408ac64b3.png)
 
-![Movie-page](https://i.ibb.co/5rK17RJ/movie-page.png)
+![Movie-page1](https://s1.hostingkartinok.com/uploads/images/2022/09/b6df0b49e53f26ade075a5cd419e94e2.png)
+![Movie-page2](https://s1.hostingkartinok.com/uploads/images/2022/09/314b0d100c0bc8f3493ce693612e391c.png)
 
-![Actor-page](https://i.ibb.co/zxMkrvk/actor-page.png)
+![Actor-page](https://s1.hostingkartinok.com/uploads/images/2022/09/834dc41ca3fa1ae74325fbd4ab37e757.png)
