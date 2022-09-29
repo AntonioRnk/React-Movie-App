@@ -2,7 +2,7 @@
   "name": "react-search-films",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://antoniornk.github.io/ReactSearchFilms/",
+  "homepage": "https://antoniornk.github.io/React-Movie-App/",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
