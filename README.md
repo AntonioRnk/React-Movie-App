@@ -4,7 +4,7 @@ Movie Watching Website. Platform for searching movies.
 
 ## Live Demo
 
-This site was built using [GitHub Pages](https://antoniornk.github.io/ReactSearchFilms/).
+This site was built using [GitHub Pages](https://antoniornk.github.io/React-Movie-App/).
 
 ## Movie sources
 
